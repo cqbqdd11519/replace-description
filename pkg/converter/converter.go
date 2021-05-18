@@ -113,10 +113,9 @@ func setValue(parent *apis.JSONSchemaProps, path []string, val string) {
 func (c *converter) Write() error {
 	// Print crd
 	if c.cfg.inPlace {
-		// TODO
-		//if err := Marshal(c.crd, c.cfg.inputYAML); err != nil {
-		//	return err
-		//}
+		if err := Marshal(c.crd, c.cfg.inputYAML); err != nil {
+			return err
+		}
 	} else {
 		_, err := os.Stat(c.cfg.outputYAML)
 		if err == nil {
